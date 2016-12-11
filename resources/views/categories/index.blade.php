@@ -4,26 +4,25 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-			<div class="header" style="font-size: 28px">Tags</div>
-			@foreach($tags as $t)
+			<div class="header" style="font-size: 28px">Categories</div>
+			@foreach($categories as $cat)
 				<p>
-					<a href="{{route('tags.show', $t->id)}}" class='btn btn-default btn-lg'>{{$t->name}}</a>
-					<span><small>Is in <b style='color:red'>{{$t->posts()->count()}}</b> posts</small></span>
+					<a href="{{route('categories.show', $cat->id)}}" class='btn btn-default btn-lg'>{{$cat->name}}</a>
+					<span><small>Is in <b style='color:red'>{{$cat->posts()->count()}}</b> posts</small></span>
 				</p>
 			@endforeach
-
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					{{$tags->links()}}
+				<div class="col-md-8">
+					{{$categories->links()}}
 				</div>
 			</div>
 		</div>
 
 		<div class="col-md-4">
 			<div class="well">
-				<h3>Create Tag</h3>
+				<h3>Create Category</h3>
 				<hr>
-				<form class='form-horizontal' method='post' action="{{route('tags.store')}}">
+				<form class='form-horizontal' method='post' action="{{route('categories.store')}}">
 					{{csrf_field()}}
 					<div class="form-group {{$errors->has('name')?'has-error':''}}">
 						<label for="name" class='col-sm-6 control-label'>Name: </label>
@@ -50,13 +49,12 @@
 
 					<div class="form-group">
 						<div class='col-sm-12'>
-							<button type='submit' class='btn btn-primary btn-block'>Make New Tag</button>
+							<button type='submit' class='btn btn-primary btn-block'>Make New Category</button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-
 	</div>
 </div>
 

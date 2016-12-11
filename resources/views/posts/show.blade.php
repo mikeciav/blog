@@ -36,6 +36,18 @@
 					</dd>
 				</dl>
 
+				<dl class="dl-horizontal">
+					<dt>Categories:</dt>
+					<dd>
+						@foreach($post->categories as $cat)
+							<span class="label label-primary">
+								<a href="{{route('categories.show',$cat->id)}}" style="color:white">{{$cat->name}}</a>
+							</span>
+							&nbsp;
+						@endforeach
+					</dd>
+				</dl>
+
 				<!--Buttons-->
 				<div class="col-sm-6">
 					<a href="{{route('posts.edit', $post->id)}}" class='btn btn-primary btn-block'>Edit Post</a>
@@ -46,8 +58,10 @@
 						<input type="submit" name='delete' value='Delete Post' class='btn btn-danger btn-block'>
 					</form>
 				</div>
-				<div class="col-sm-12">
-					<a href="{{url('/')}}" class='btn btn-default btn-block'>Return to Posts</a>
+				<div class="row">
+					<div class="col-sm-12">
+						<a href="{{url('/')}}" class='btn btn-default btn-block'>Return to Posts</a>
+					</div>
 				</div>
 			</div>
 		</div>

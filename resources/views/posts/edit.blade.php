@@ -64,6 +64,23 @@
 							</div>	
 						</div>
 
+						<div class="form-group {{$errors->has('categories')?'has-error':''}}">
+							<label class="col-md-4 control-label" for="categories">Categories: </label>
+							<div class="col-md-6">
+								<select name='categories[]' id='categories' class='form-control multiSelect' multiple='multiple'>
+									@foreach($categories as $cat)
+										<option value="{{$cat->id}}">{{$cat->name}}</option>
+									@endforeach
+								</select>
+
+								@if($errors->has('tags'))
+									<span class="help-block">
+										<strong>{{$errors->first('categories')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>
+
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type='submit' class='btn btn-success btn-block'>
@@ -92,6 +109,7 @@
 <script>
 	//Instantiate multiselect, encode the selected tag ids, and trigger the change in the select
 	$('.multiSelect').select2();
-	$('.multiSelect').select2().val({!!json_encode($post->tags()->getRelatedIds())!!}).trigger('change');
+	$('#tags').select2().val({!!json_encode($post->tags()->getRelatedIds())!!}).trigger('change');
+	$('#categories').select2().val({!!json_encode($post->categories()->getRelatedIds())!!}).trigger('change');
 </script>
 @stop

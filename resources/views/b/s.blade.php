@@ -18,9 +18,10 @@
 					<dt>Updated On:</dt>
 					<dd class="dd">{{$post->updated_at}}</dd>
 				</dl>
-
-				<div class="col-sm-12">
-					<a href="{{url('/')}}" class='btn btn-default btn-block'>Return to Posts</a>
+				<div class="row">
+					<div class="col-sm-12">
+						<a href="{{url('/')}}" class='btn btn-default btn-block'>Return to Posts</a>
+					</div>
 				</div>
 			</div>
 		</div>

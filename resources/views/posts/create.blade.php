@@ -63,6 +63,23 @@
 							</div>	
 						</div>
 
+						<div class="form-group {{$errors->has('categories')?'has-error':''}}">
+							<label class="col-md-4 control-label" for="categories">Categories: </label>
+							<div class="col-md-6">
+								<select name='categories[]' id='categories' class='form-control multiSelect' multiple='multiple'>
+									@foreach($categories as $cat)
+										<option value="{{$cat->id}}">{{$cat->name}}</option>
+									@endforeach
+								</select>
+								
+								@if($errors->has('tags'))
+									<span class="help-block">
+										<strong>{{$errors->first('categories')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>
+
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-2">
 								<button type='submit' class='btn btn-default btn-block'>

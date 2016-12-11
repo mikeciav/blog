@@ -20,3 +20,4 @@ Route::resource('posts', 'PostController');
 Route::get('b/{slug}', 'BController@slug')->name('slug');
 
 Route::resource('tags', 'TagController');
+Route::resource('categories', 'CategoryController');
