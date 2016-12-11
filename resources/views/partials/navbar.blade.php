@@ -11,7 +11,7 @@
 
         <!-- Branding Image -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ config('app.name', 'Ragamuffin\'s Blog') }}
         </a>
     </div>
 
@@ -23,6 +23,8 @@
 
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
+            <li class="{{Request::is('tags')?'active':''}}"><a href="{{ url('/tags') }}">Tags</a></li>
+            <li class="{{Request::is('categories')?'active':''}}"><a href="{{ url('/categories') }}">Categories</a></li>
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>

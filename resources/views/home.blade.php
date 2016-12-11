@@ -14,12 +14,12 @@
                 </div>
             @endif
         </div>
-        <hr>
-            <div class='row'>
-                <div 'col-md-8 col-offset-6'>
-                    {!!$posts->links()!!}
-                </div>
-            </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div 'col-md-8 col-offset-2'>
+            {!!$posts->links()!!}
+        </div>
     </div>
 </div>
 @endsection
