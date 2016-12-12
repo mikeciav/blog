@@ -23,8 +23,11 @@
 
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
-            <li class="{{Request::is('tags')?'active':''}}"><a href="{{ url('/tags') }}">Tags</a></li>
-            <li class="{{Request::is('categories')?'active':''}}"><a href="{{ url('/categories') }}">Categories</a></li>
+            <li class="{{Request::is('tags')?'active':''}}"><a href="{{ route('tags.index') }}">Tags</a></li>
+            <li class="{{Request::is('categories')?'active':''}}"><a href="{{ route('categories.index') }}">Categories</a></li>
+            @if(Auth::user() && Auth::user()->isAdmin())
+                <li class="{{Request::is('posts')?'active':''}}"><a href="{{ route('posts.create') }}">Create Post</a></li>
+            @endif;
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>
