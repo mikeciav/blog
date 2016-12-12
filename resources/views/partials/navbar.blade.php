@@ -25,6 +25,14 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="{{Request::is('tags')?'active':''}}"><a href="{{ route('tags.index') }}">Tags</a></li>
             <li class="{{Request::is('categories')?'active':''}}"><a href="{{ route('categories.index') }}">Categories</a></li>
+            <li style='padding-top:10px;'>
+                <form method='get'>
+                    {{csrf_field()}}
+                    <div class="form-group">
+                        <input type="search" name='query' id='query' class='form-control' placeholder='Search' style='width:300px; height:40px;'>
+                    </div>
+                </form>                
+            </li>
             @if(Auth::user() && Auth::user()->isAdmin())
                 <li class="{{Request::is('posts')?'active':''}}"><a href="{{ route('posts.create') }}">Create Post</a></li>
             @endif;

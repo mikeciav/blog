@@ -14,10 +14,18 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories= Category::orderBy('name')->paginate(5);
-        return view('categories.index', compact('categories'));
+        $query = $request->get("query");
+        if($query){
+            $posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
+            return view('home', compact('posts'));
+        }
+        else{
+            $categories= Category::orderBy('name')->paginate(5);
+            return view('categories.index', compact('categories'));
+        }
+        
     }
 
     /**

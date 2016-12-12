@@ -14,10 +14,17 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tags= Tag::orderBy('name')->paginate(5);
-        return view('tags.index', compact('tags'));
+        $query = $request->get("query");
+        if($query){
+            $posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
+            return view('home', compact('posts'));
+        }
+        else {
+            $tags= Tag::orderBy('name')->paginate(5);
+            return view('tags.index', compact('tags'));
+        }
     }
 
     /**

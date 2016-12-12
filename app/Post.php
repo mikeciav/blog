@@ -10,7 +10,13 @@ class Post extends Model
     	return $this->belongsToMany('App\Tag');
     }
 
-public function categories(){
+	public function categories(){
     	return $this->belongsToMany('App\Category');
-    }    
+    }
+
+    public function scopeSearch($query, $search){
+    	return $query->where('title', 'LIKE', "%{$search}%");
+    }
+
+
 }

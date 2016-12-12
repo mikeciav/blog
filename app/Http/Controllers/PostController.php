@@ -15,10 +15,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts=Post::orderBy('id', 'desc')->paginate(5);
-        return view('home', compact('posts'));
+        $query = $request->get("query");
+        if($query){
+            $posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
+            return view('home', compact('posts'));
+        }
+        else{
+            $posts=Post::orderBy('id', 'desc')->paginate(5);
+            return view('home', compact('posts'));
+        }
     }
 
     /**
