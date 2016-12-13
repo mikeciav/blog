@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Image;
 use App\Post;
 
 use App\Category;
@@ -50,13 +51,21 @@ class PostController extends Controller
     {
         $this->validate($request, array('title' =>  'required|max:255',
                                         'slug'  =>  'required|min:3|max:255|unique:posts',
-                                        'body'  =>  'required' 
+                                        'body'  =>  'required',
+                                        'img' =>  'image'
                                         )
         );
 
         $post = new Post;
         foreach(array('title', 'slug', 'body') as $v){
             $post->{$v}=$request->{$v};
+        }
+        if($request->hasFile('img')){
+            $image = $request->file('img');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $location = "images/" . $imageName;
+            Image::make($image)->save($location);
+            $post->image = $imageName;
         }
         $post->save();
 
@@ -107,12 +116,24 @@ class PostController extends Controller
         $post=Post::find($id);
         $this->validate($request, array('title' =>  'required|max:255',
                                         'slug'  =>  "required|min:3|max:255|unique:posts,slug, {$id}",
-                                        'body'  =>  'required' 
+                                        'body'  =>  'required',
+                                        'img'   =>  'image'
                                         )
         );
 
         foreach(array('title', 'slug', 'body') as $v){
             $post->{$v}=$request->{$v};
+        }
+
+        if($request->hasFile('img')){
+            $image = $request->file('img');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $location = "images/" . $imageName;
+            Image::make($image)->save($location);
+
+            $oldImage = $post->image;
+            $post->image = $imageName;
+            Storage::delete($oldPhoto);
         }
         $post->save();
         

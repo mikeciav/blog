@@ -8,7 +8,7 @@
 		<div class="col-md-8">
 			<div class="panel panel-header">
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="{{route('posts.store')}}">
+					<form class="form-horizontal" role="form" method="post" action="{{route('posts.store')}}" enctype='multipart/form-data'>
 						{{csrf_field()}}
 						<div class="form-group {{$errors->has('title')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="title">Title: </label>
@@ -24,7 +24,7 @@
 
 						<div class="form-group {{$errors->has('slug')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="slug">Slug: </label>
-							<div class="col-md-6">
+							<div class="col-md-8">
 								<input type='text' name='slug' id='slug' class='form-control' value="{{old('slug')}}" required />
 								@if($errors->has('slug'))
 									<span class="help-block">
@@ -33,6 +33,18 @@
 								@endif
 							</div>	
 						</div>
+
+						<div class="form-group {{$errors->has('img')?'has-error':''}}">
+							<label class="col-md-4 control-label" for="img">Upload Image: </label>
+							<div class="col-md-6">
+								<input type='file' name='img' id='img' class='form-control' value="{{old('img')}}" multiple='multiple'/>
+								@if($errors->has('img'))
+									<span class="help-block">
+										<strong>{{$errors->first('img')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>						
 
 						<div class="form-group {{$errors->has('body')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="body">Post body: </label>

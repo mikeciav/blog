@@ -4,6 +4,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
+			<img src="{{asset('images/'.$post->image)}}" alt="">
 			<h2>{{$post->title}}</h2>
 			<p class='lead'>{!!$post->body!!}</p>
 		</div>

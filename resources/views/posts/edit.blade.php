@@ -46,6 +46,17 @@
 							</div>	
 						</div>
 
+						<div class="form-group {{$errors->has('img')?'has-error':''}}">
+							<label class="col-md-4 control-label" for="img">Upload Image: </label>
+							<div class="col-md-6">
+								<input type='text' name='slug' id='slug' class='form-control' value="{{old('slug')}}" required />
+								@if($errors->has('img'))
+									<span class="help-block">
+										<strong>{{$errors->first('img')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>		
 
 						<div class="form-group {{$errors->has('tags')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="tags">Tags: </label>

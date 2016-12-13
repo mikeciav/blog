@@ -18,5 +18,7 @@ class Post extends Model
     	return $query->where('title', 'LIKE', "%{$search}%");
     }
 
-
+    public function users(){
+    	return $this->belongsToMany('App\User');
+    }
 }
