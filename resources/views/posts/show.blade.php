@@ -54,7 +54,7 @@
 				</div>
 				<div class="col-sm-6">
 					<form action="{{route('posts.destroy', $post->id)}}" method='post'>
-						{{method_field("DELETE'")}}{{csrf_field()}}
+						{{method_field("DELETE")}}{{csrf_field()}}
 						<input type="submit" name='delete' value='Delete Post' class='btn btn-danger btn-block'>
 					</form>
 				</div>

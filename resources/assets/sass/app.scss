@@ -11,3 +11,23 @@
 a{
 	color: red
 }
+
+.btn-fav{
+	background: none;
+	border: none;
+}
+
+.not-fav{
+	color:black;
+}
+.is-fav:hover{
+	color:black;
+}
+
+.not-fav:hover{
+	color:red;
+}
+
+.is-fav{
+	color:red;
+}

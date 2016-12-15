@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use Image;
+use Auth;
+
 use App\Post;
 
 use App\Category;
@@ -18,14 +22,17 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        if(Auth::check()){
+            $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
+        }
         $query = $request->get("query");
         if($query){
             $posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
-            return view('home', compact('posts'));
+            return view('home', compact('posts', 'fav'));
         }
         else{
             $posts=Post::orderBy('id', 'desc')->paginate(5);
-            return view('home', compact('posts'));
+            return view('home', compact('posts', 'fav'));
         }
     }
 

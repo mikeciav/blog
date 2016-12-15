@@ -32,7 +32,9 @@
                     </div>
                 </form>                
             </li>
-
+            @if(Auth::check())
+                <li class="{{Request::is('tags')?'active':''}}"><a href="{{ route('favorites', Auth::id()) }}">Favorites</a></li>
+            @endif
             <li class="{{Request::is('tags')?'active':''}}"><a href="{{ route('tags.index') }}">Tags</a></li>
             <li class="{{Request::is('categories')?'active':''}}"><a href="{{ route('categories.index') }}">Categories</a></li>
             @if(Auth::user() && Auth::user()->isAdmin())

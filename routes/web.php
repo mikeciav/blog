@@ -24,3 +24,4 @@ Route::resource('categories', 'CategoryController');
 Route::get('profile/{id}', 'ProfileController@profile')->name('profile')->middleware('auth');
 Route::get('profile/{id}/favorites', 'ProfileController@favorites')->name('favorites')->middleware('auth');
 Route::post('profile/{id}/favorites', 'ProfileController@store')->name('favorites.store');
+Route::delete('profile/{user_id}/favorites/{post_id}', 'ProfileController@destroy')->name('favorites.destroy');
