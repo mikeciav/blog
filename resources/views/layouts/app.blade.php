@@ -6,7 +6,7 @@
 
 <body style='padding-top:100px;'>
 
-        <nav class="navbar navbar-default navbar-fixed-top" style='padding-top: 40px;'>
+        <nav class="navbar navbar-default navbar-fixed-top" style='padding-top: 20px;'>
             @include('partials.navbar')
         </nav>
 
