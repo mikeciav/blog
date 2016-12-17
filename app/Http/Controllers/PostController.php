@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use Image;
 use Auth;
+use Image;
+use Session;
 
 use App\Post;
 
@@ -80,6 +81,7 @@ class PostController extends Controller
         $post->tags()->sync($request->tags, false);
         $post->categories()->sync($request->categories, false);
 
+        Session::flash('success', 'The post has been published.');
         return redirect()->route('posts.show', $post->id);
     }
 
