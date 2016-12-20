@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use DB;
 use Mail;
+use Session;
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -98,7 +99,9 @@ class RegisterController extends Controller
             $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name]));
             Mail::to($user->email)->send($email);
             DB::commit();
-            return back();
+
+            Session::flash('info', 'Thank you for registering! You are required to verify your email address before you can post comments. Please check your email for a link to verify your address.');
+            return redirect('/');
         }
         catch(Exception $e)
         {
@@ -111,7 +114,13 @@ class RegisterController extends Controller
     {
         // The verified method has been added to the user model and chained here
         // for better readability
-        User::where('email_token',$token)->firstOrFail()->verified();
+        try {
+            User::where('email_token',$token)->firstOrFail()->verified();
+        }
+        catch(Exception $e){
+            Session::flash('error', 'Verification failed. Please check the verification link and try again.');
+        }
+        Session::flash('success', 'Your email has been verified! Please log in to complete the process.');
         return redirect('login');
     }
 }

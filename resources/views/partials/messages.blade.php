@@ -1,6 +1,14 @@
 @if(Session::has('success'))
 	<div class="alert alert-success" role='success' style'margin-top:7px'>
-		<strong>Great! </strong>{{Session::get('success')}}
+		{{Session::get('success')}}
+	</div>
+@elseif(Session::has('info'))
+	<div class="alert alert-info" role='success' style'margin-top:7px'>
+		{{Session::get('info')}}
+	</div>
+@elseif(Session::has('error'))
+	<div class="alert alert-danger" role='success' style'margin-top:7px'>
+		{{Session::get('error')}}
 	</div>
 @endif
 

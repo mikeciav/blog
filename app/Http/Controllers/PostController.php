@@ -162,6 +162,7 @@ class PostController extends Controller
             $post->categories()->sync(array());   
         }
 
+        Session::flash('success', 'The post has been edited.');
         return redirect()->route('posts.show', $post->id);
     }
 
