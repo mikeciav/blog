@@ -5,7 +5,11 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h2>{{$post->title}}</h2>
-			<p class='lead'>{!!$post->body!!}</p>
+			<p class='lead'><i><{!!$post->tagline!!}</i></p>
+			<hr>
+			{!!$post->body!!}
+			<hr>
+			<p><small>{!!$post->footer!!}</small></p>
 		</div>
 		<div class="col-md-4">
 			<div class="well">

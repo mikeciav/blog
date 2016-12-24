@@ -26,4 +26,4 @@ Route::get('profile/{id}/favorites', 'ProfileController@favorites')->name('favor
 Route::post('profile/{id}/favorites', 'ProfileController@store')->name('favorites.store');
 Route::delete('profile/{user_id}/favorites/{post_id}', 'ProfileController@destroy')->name('favorites.destroy');
 
-Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
+Route::get('register/verify/{token}', 'Auth\RegisterController@verify');

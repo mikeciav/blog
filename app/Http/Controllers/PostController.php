@@ -23,18 +23,18 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::check()){
+        if(Auth::check()){ //Get favorites if user logged in
             $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
         }
         $query = $request->get("query");
         if($query){
             $posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
-            return view('home', compact('posts', 'fav'));
         }
         else{
-            $posts=Post::orderBy('id', 'desc')->paginate(5);
-            return view('home', compact('posts', 'fav'));
+            $posts=Post::orderBy('id', 'desc')->paginate(5);            
         }
+        return view('home', compact('posts', 'fav'));
+
     }
 
     /**
@@ -60,12 +60,13 @@ class PostController extends Controller
         $this->validate($request, array('title' =>  'required|max:255',
                                         'slug'  =>  'required|min:3|max:255|unique:posts',
                                         'body'  =>  'required',
-                                        'img' =>  'image'
+                                        'img' =>  'image',
+                                        'tagline' => 'required|min:10',
                                         )
         );
 
         $post = new Post;
-        foreach(array('title', 'slug', 'body') as $v){
+        foreach(array('title', 'slug', 'body', 'tagline', 'footer') as $v){
             $post->{$v}=$request->{$v};
         }
         if($request->hasFile('img')){
@@ -93,8 +94,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        if(Auth::check()){ //Get favorites if user logged in
+            $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
+        }
         $post=Post::find($id);
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact('post', 'fav'));
     }
 
     /**

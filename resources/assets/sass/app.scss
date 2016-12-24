@@ -9,7 +9,15 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 a{
-	color: red
+	color: #46928F;
+}
+
+a.link-sidebar{
+	color: #FF6600;	
+}
+
+h2, h3, h4, h5{
+	color: #46B2AF;	
 }
 
 .btn-fav{
@@ -30,4 +38,8 @@ a{
 
 .is-fav{
 	color:red;
+}
+
+.navbar .nav > li > a, .navbar .nav > li > form {
+	line-height: 25px;
 }

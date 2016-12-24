@@ -35,13 +35,13 @@ class ProfileController extends Controller
 	public function store($post_id){
 		$post = Post::find($post_id);
 		$post->users()->sync([Auth::id()], false);
-		return redirect('/');
+		return redirect()->back();
 	}
 
 	public function destroy($user_id, $post_id){
 		$post = Post::find($post_id);
 		$post->users()->detach();
 		$post->save();
-		return redirect()->route('favorites', Auth::id());
+		return redirect()->back();
 	}
 }
