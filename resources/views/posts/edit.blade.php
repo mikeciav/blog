@@ -37,12 +37,18 @@
 						<div class="form-group {{$errors->has('img')?'has-error':''}}">
 							<label class="col-md-2 control-label" for="img">Image: </label>
 							<div class="col-md-10">
-								<input type='file' name='img' id='img' class='form-control' value="{{$post->img}}" multiple='multiple'/>
+								<span class="input-group-btn">
+							        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+							         	<i class="fa fa-picture-o"></i> Choose
+							        </a>
+							    </span>
+							    <input id="thumbnail" name='img' class="form-control" type="text" value="{{$post->img}}">
 								@if($errors->has('img'))
 									<span class="help-block">
 										<strong>{{$errors->first('img')}}</strong>
 									</span>
 								@endif
+								<img id="holder" style="margin-top:15px;max-height:100px;">		
 							</div>	
 						</div>						
 
@@ -123,4 +129,7 @@
 	$('#tags').select2().val({!!json_encode($post->tags()->getRelatedIds())!!}).trigger('change');
 	$('#categories').select2().val({!!json_encode($post->categories()->getRelatedIds())!!}).trigger('change');
 </script>
+<script src="{{ URL::to('js/tinymce/tinymce.min.js')}}"></script>
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script src="/js/mceSetup.js"></script>
 @stop

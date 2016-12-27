@@ -1,6 +1,10 @@
 <div class='well'>
 	<h2>
-		<a href="{{route('slug', $post->slug)}}">{{$post->title}}</a>
+		@if(Auth::user() && Auth::user()->isAdmin())
+			<a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a>
+		@else
+			<a href="{{route('slug', $post->slug)}}">{{$post->title}}</a>
+		@endif
 		@if(Auth::check())
 			<small class='pull-right'>
 			@if($is_fav = in_array($post->id, $fav))
@@ -31,7 +35,7 @@
 		</span>
 	</p>
 	<hr>
-	<span><img src="{{asset('images/'.$post->image)}}" alt="" class='img-responsive'></span>
+	<span><img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive'></span>
 	<hr>
 	<i>{!!$post->tagline!!}</i>
 </div>

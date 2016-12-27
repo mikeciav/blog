@@ -15,7 +15,7 @@
 					</span>
 				</p>
 			<hr>
-			<img src="{{asset('images/'.$post->image)}}" alt="">
+			<img src="{{asset('photos/'.$post->image)}}" alt="">
 			<hr>
 			<p class='lead'><i>{{$post->tagline}}</i></p>
 			<hr>

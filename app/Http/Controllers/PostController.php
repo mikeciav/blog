@@ -60,7 +60,7 @@ class PostController extends Controller
         $this->validate($request, array('title' =>  'required|max:255',
                                         'slug'  =>  'required|min:3|max:255|unique:posts',
                                         'body'  =>  'required',
-                                        'img' =>  'image',
+                                        'img' => 'required',
                                         'tagline' => 'required|min:10',
                                         )
         );
@@ -69,13 +69,10 @@ class PostController extends Controller
         foreach(array('title', 'slug', 'body', 'tagline', 'footer') as $v){
             $post->{$v}=$request->{$v};
         }
-        if($request->hasFile('img')){
-            $image = $request->file('img');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $location = "images/" . $imageName;
-            Image::make($image)->save($location);
-            $post->image = $imageName;
-        }
+        $img = explode('/photos/',$request->img);
+        $img = $img[1];
+        $post->image = $img;
+
         $post->save();
 
         //Sync tags
@@ -130,24 +127,23 @@ class PostController extends Controller
         $this->validate($request, array('title' =>  'required|max:255',
                                         'slug'  =>  "required|min:3|max:255|unique:posts,slug, {$id}",
                                         'body'  =>  'required',
-                                        'img'   =>  'image'
+                                        'img' => 'required',
+                                        'tagline' => 'required|min:10',
                                         )
         );
 
         foreach(array('title', 'slug', 'body') as $v){
             $post->{$v}=$request->{$v};
         }
-
-        if($request->hasFile('img')){
-            $image = $request->file('img');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $location = "images/" . $imageName;
-            Image::make($image)->save($location);
-
-            $oldImage = $post->image;
-            $post->image = $imageName;
-            Storage::delete($oldPhoto);
+        if (strpos($request->img,'/photos/')){
+            $img = explode('/photos/',$request->img);
+            $img = $img[1];
         }
+        else{
+            $img = $request->img;
+        }
+        $post->image = $img;
+
         $post->save();
         
         //Sync tags

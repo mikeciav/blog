@@ -15,6 +15,7 @@ Auth::routes();
 
 Route::get('/', 'PostController@index');
 Route::resource('posts', 'PostController');
+Route::get('posts/show/{id}', 'PostController@show')->name('posts.show');
 
 Route::get('b/{slug}', 'BController@slug')->name('slug');
 
