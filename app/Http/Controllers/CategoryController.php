@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 
+use Auth;
+use DB;
+
 use App\Post;
 
 class CategoryController extends Controller
@@ -55,8 +58,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
+        if(Auth::check()){ //Get favorites if user logged in
+            $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
+        }
         $category = Category::find($id);
-        return view('categories.show', compact('category'));
+        return view('categories.show', compact('category', 'fav'));
     }
 
     /**

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tag;
 
+use Auth;
+use DB;
+
 use App\Post;
 
 class TagController extends Controller
@@ -64,8 +67,11 @@ class TagController extends Controller
      */
     public function show($id)
     {
+        if(Auth::check()){ //Get favorites if user logged in
+            $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
+        }
         $tag = Tag::find($id);
-        return view('tags.show', compact('tag'));
+        return view('tags.show', compact('tag', 'fav'));
     }
 
     /**
