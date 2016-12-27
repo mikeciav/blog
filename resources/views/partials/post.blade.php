@@ -38,5 +38,19 @@
 	<span><img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive'></span>
 	<hr>
 	<i>{!!$post->tagline!!}</i>
+	<div class='pull-right'>
+		@foreach($post->categories as $cat)
+			<span class="label label-primary">
+				<a href="{{route('categories.show',$cat->id)}}" style="color:white">{{$cat->name}}</a>
+			</span>
+			&nbsp;
+		@endforeach
+		@foreach($post->tags as $t)
+			<span class="label label-info">
+				<a href="{{route('tags.show',$t->id)}}" style="color:white">{{$t->name}}</a>
+			</span>
+			&nbsp;
+		@endforeach
+	</div>
 </div>
 <hr>

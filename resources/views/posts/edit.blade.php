@@ -1,11 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.noSidebar')
 
 @section('content')
 <h1>Edit Post</h1>
 <hr>
 <div class="container">
 	<div class="row">
-		<div class="col-md-8">
 			<div class="panel panel-header">
 				<div class="panel-body">
 					<form class="form-horizontal" role="form" method="post" action="{{route('posts.update', $post->id)}}" enctype='multipart/form-data'>
@@ -42,7 +41,7 @@
 							         	<i class="fa fa-picture-o"></i> Choose
 							        </a>
 							    </span>
-							    <input id="thumbnail" name='img' class="form-control" type="text" value="{{$post->img}}">
+							    <input id="thumbnail" name='img' class="form-control" type="text" value="{{$post->image}}">
 								@if($errors->has('img'))
 									<span class="help-block">
 										<strong>{{$errors->first('img')}}</strong>
@@ -86,6 +85,18 @@
 							</div>	
 						</div>
 
+						<div class="form-group {{$errors->has('tagline')?'has-error':''}}">
+							<label class="col-md-2 control-label" for="body">Tag Line: </label>
+							<div class="col-md-10">
+								<textarea name='tagline' id='tagline'rows='5' class='form-control' placeholder='Leading sentence or two to introduce post' required>{{$post->tagline}}</textarea>
+								@if($errors->has('tagline'))
+									<span class="help-block">
+										<strong>{{$errors->first('tagline')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>
+
 						<div class="form-group {{$errors->has('body')?'has-error':''}}">
 							<label class="col-md-2 control-label" for="body">Post body: </label>
 							<div class="col-md-10">
@@ -93,6 +104,18 @@
 								@if($errors->has('body'))
 									<span class="help-block">
 										<strong>{{$errors->first('body')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>
+
+						<div class="form-group {{$errors->has('footer')?'has-error':''}}">
+							<label class="col-md-2 control-label" for="body">Footer: </label>
+							<div class="col-md-10">
+								<textarea name='footer' id='footer'rows='5' class='form-control' placeholder='Sources, orig. pub. date, etc.'>{{$post->footer}}</textarea>
+								@if($errors->has('footer'))
+									<span class="help-block">
+										<strong>{{$errors->first('footer')}}</strong>
 									</span>
 								@endif
 							</div>	
@@ -116,7 +139,6 @@
 					</form>
 				</div>
 			</div>
-		</div>
 	</div>
 </div>
 

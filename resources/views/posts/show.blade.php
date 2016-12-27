@@ -22,8 +22,24 @@
 			{!!$post->body!!}
 			<hr>
 			<p><small>{!!$post->footer!!}</small></p>
-			<hr>
 			<div class="row">
+				<div class='pull-right'>
+					@foreach($post->categories as $cat)
+						<span class="label label-primary">
+							<a href="{{route('categories.show',$cat->id)}}" style="color:white">{{$cat->name}}</a>
+						</span>
+						&nbsp;
+					@endforeach
+					@foreach($post->tags as $t)
+						<span class="label label-info">
+							<a href="{{route('tags.show',$t->id)}}" style="color:white">{{$t->name}}</a>
+						</span>
+						&nbsp;
+					@endforeach
+				</div>
+			</div>
+			<hr>
+			<div class="row" style='margin-top:40px'>
 				@if(Auth::check())
 					<div class='col-md-3'>
 						@if($is_fav = in_array($post->id, $fav))
@@ -57,6 +73,7 @@
 			</div>
 		</div>
 	</div>
+	<hr>
 	<div class="row">
 		<!--Buttons-->
 		<div class="col-sm-2">
@@ -69,29 +86,6 @@
 			</form>
 		</div>
 	</div>	
-	<dl class="dl-horizontal">
-		<dt>Tags:</dt>
-		<dd>
-			@foreach($post->tags as $t)
-				<span class="label label-info">
-					<a href="{{route('tags.show',$t->id)}}" style="color:white">{{$t->name}}</a>
-				</span>
-				&nbsp;
-			@endforeach
-		</dd>
-	</dl>
-
-	<dl class="dl-horizontal">
-		<dt>Categories:</dt>
-		<dd>
-			@foreach($post->categories as $cat)
-				<span class="label label-primary">
-					<a href="{{route('categories.show',$cat->id)}}" style="color:white">{{$cat->name}}</a>
-				</span>
-				&nbsp;
-			@endforeach
-		</dd>
-	</dl>
 </div>
 
 
