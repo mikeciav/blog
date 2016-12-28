@@ -14,9 +14,8 @@
         @endif
         </div>
     </div>
-    <hr>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4 col-centered">
         {!!$posts->links()!!}
         </div>
     </div>
