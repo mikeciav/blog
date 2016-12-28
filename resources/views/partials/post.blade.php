@@ -26,8 +26,8 @@
 			</small>
 		@endif
 	</h2>
-	<hr>
-	<p>
+
+	<p style='margin:20px 0px'>
 		<i class='glyphicon glyphicon-user' aria-hidden='true'></i> 
 		Mike "Ragamuffin" Ciavarella
 		<span class='pull-right'>
@@ -35,7 +35,6 @@
 			<small>{{$post->created_at->format('F jS Y g:i A')}}</small>
 		</span>
 	</p>
-	<hr>
 	<span><img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive'></span>
 	<hr>
 	<i>{!!$post->tagline!!}</i>

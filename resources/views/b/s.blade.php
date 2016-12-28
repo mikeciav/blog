@@ -41,8 +41,8 @@
 								</button>
 							</form>
 						@endif
+					</div>					
 					@endif
-					</div>
 					<div class='col-md-5'>
 						<span class='st_facebook_large'></span>
 						<span class='st_twitter_large'></span>
