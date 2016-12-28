@@ -3,17 +3,17 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8 well">
 			<h2>{{$post->title}}</h2>
 			<hr>
-				<p>
+				<span>
 					<i class='glyphicon glyphicon-user' aria-hidden='true'></i> 
 					Mike "Ragamuffin" Ciavarella
 					<span class='pull-right'>
 						<i class='glyphicon glyphicon-time' aria-hidden='true'></i>
 						<small>{{$post->created_at->format('F jS Y g:i A')}}</small>
 					</span>
-				</p>
+				</span>
 			<hr>
 			<img src="{{asset('photos/'.$post->image)}}" alt="">
 			<hr>
@@ -21,7 +21,7 @@
 			<hr>
 			{!!$post->body!!}
 			<hr>
-			<p><small>{!!$post->footer!!}</small></p>
+			<p class="footer"><small>{!!$post->footer!!}</small></p>
 			<hr>
 			<div class="row">
 				@if(Auth::check())

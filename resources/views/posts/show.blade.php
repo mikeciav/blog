@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8 well">
 			<h2>{{$post->title}}</h2>
 			<hr>
 				<p>
@@ -21,7 +21,7 @@
 			<hr>
 			{!!$post->body!!}
 			<hr>
-			<p><small>{!!$post->footer!!}</small></p>
+			<p class="footer"><small>{!!$post->footer!!}</small></p>
 			<div class="row">
 				<div class='pull-right'>
 					@foreach($post->categories as $cat)

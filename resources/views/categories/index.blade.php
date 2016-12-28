@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-4 well">
 			<div class="header" style="font-size: 28px">Categories</div>
 			@foreach($categories as $cat)
 				<p>

@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">	
+		<div class="col-md-12">	
 			@if($user->posts()->count())
 				@foreach($user->posts as $post)
 					@include('partials.post');

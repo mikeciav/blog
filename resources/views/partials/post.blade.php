@@ -27,14 +27,14 @@
 		@endif
 	</h2>
 
-	<p style='margin:20px 0px'>
+	<div style='padding:10px 0px 20px 0px'>
 		<i class='glyphicon glyphicon-user' aria-hidden='true'></i> 
 		Mike "Ragamuffin" Ciavarella
 		<span class='pull-right'>
 			<i class='glyphicon glyphicon-time' aria-hidden='true'></i>
 			<small>{{$post->created_at->format('F jS Y g:i A')}}</small>
 		</span>
-	</p>
+	</div>
 	<span><img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive'></span>
 	<hr>
 	<i>{!!$post->tagline!!}</i>
