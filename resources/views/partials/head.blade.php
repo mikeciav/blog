@@ -8,6 +8,8 @@
 
 <title>{{ config('app.name', 'Ragamuffin\'s Blog') }}</title>
 
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
 <!-- Styles -->
 <link href="/css/app.css" rel="stylesheet">
 <link href="/css/select2.min.css" rel="stylesheet">
