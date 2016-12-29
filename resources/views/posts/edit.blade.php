@@ -100,7 +100,7 @@
 						<div class="form-group {{$errors->has('body')?'has-error':''}}">
 							<label class="col-md-2 control-label" for="body">Post body: </label>
 							<div class="col-md-10">
-								<textarea name='body' id='body' rows='10' class='form-control' placeholder="Memes here" required>{{$post->body}}</textarea>
+								<textarea name='body' id='body' rows='20' class='form-control' placeholder="Memes here" required>{{$post->body}}</textarea>
 								@if($errors->has('body'))
 									<span class="help-block">
 										<strong>{{$errors->first('body')}}</strong>

@@ -14,6 +14,7 @@ class Bcontroller extends Controller
 		if(Auth::check()){ //Get favorites if user logged in
             $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
         }
+
 		$query = $request->get("query");
 		if($query){
 			$posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
@@ -21,6 +22,9 @@ class Bcontroller extends Controller
 		}
 		else{
 			$post=Post::where('slug','=',$slug)->first();
+
+			$post->logView(Auth::check() ? Auth::id() : 0);
+
 			return view('b.s', compact('post', 'fav'));
 		}
 	}

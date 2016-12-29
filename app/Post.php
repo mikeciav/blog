@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Post extends Model
 {
@@ -20,5 +21,9 @@ class Post extends Model
 
     public function users(){
     	return $this->belongsToMany('App\User');
+    }
+
+    public function logView($user=0){
+        DB::table('post_views')->insert(['post_id' => $this->id, 'user_id' => $user]);
     }
 }

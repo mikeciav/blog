@@ -95,6 +95,9 @@ class PostController extends Controller
             $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
         }
         $post=Post::find($id);
+
+        $post->logView(Auth::check() ? Auth::id() : 0);
+
         return view('posts.show', compact('post', 'fav'));
     }
 
@@ -132,7 +135,7 @@ class PostController extends Controller
                                         )
         );
 
-        foreach(array('title', 'slug', 'body') as $v){
+        foreach(array('title', 'slug', 'body', 'tagline') as $v){
             $post->{$v}=$request->{$v};
         }
         if (strpos($request->img,'/photos/')){
