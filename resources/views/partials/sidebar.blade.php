@@ -57,12 +57,18 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a class='link-header' href="https://twitter.com/RagamuffinCS">Twitter</a></li>
+                                <li>
+                                    <img src="/twitter_logo.ico" height='15px' width='15px'>                                
+                                    <a class='link-header' href="https://twitter.com/RagamuffinCS">Twitter</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a class='link-header' href="http://www.hltv.org/?pageid=14&userid=77754">HLTV</a></li>
+                                <li>
+                                    <img src="/hltv_logo.png" height='15px' width='15px'>
+                                    <a class='link-header' href="http://www.hltv.org/?pageid=14&userid=77754">HLTV</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

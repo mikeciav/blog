@@ -11,13 +11,23 @@
 
         <!-- Branding Image -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name') }}
+            <img height='50px' src="/logo.png" style='margin-top:-10px'>
         </a>
     </div>
 
     <div class="collapse navbar-collapse" id="app-navbar-collapse">
         <!-- Left Side Of Navbar -->
         <ul class="nav navbar-nav">
+        <li>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+        </li>
+        <a class="navbar-brand">
+            <small style='vertical-align: -20%'><strong>Quality</strong> Counter-Strike Journalism</small>
+        </a>
+        </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
                 <li class="{{Request::is('favorites')?'active':''}}"><a href="{{ route('favorites', Auth::id()) }}">Favorites</a></li>
             @endif
@@ -26,11 +36,7 @@
             @if(Auth::user() && Auth::user()->isAdmin())
                 <li class="{{Request::is('posts')?'active':''}}"><a href="{{ route('posts.create') }}">Create Post</a></li>
             @endif
-        </ul>
-
-        <!-- Right Side Of Navbar -->
-        <ul class="nav navbar-nav navbar-right">
-            <li style='padding-top:7px;, padding-bottom:-2px; padding-right:5px'>
+            <li style='padding-top:7px;, padding-bottom:-2px; padding-right:5px; padding-left:5px'>
                 <form method='get' role='form'>
                     {{csrf_field()}}
                     <div class="form-group has-feedback">
