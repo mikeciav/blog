@@ -30,7 +30,7 @@
 
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
-            <li style='padding-top:7px;, padding-bottom:-2px'>
+            <li style='padding-top:7px;, padding-bottom:-2px; padding-right:5px'>
                 <form method='get' role='form'>
                     {{csrf_field()}}
                     <div class="form-group has-feedback">
@@ -40,10 +40,7 @@
                 </form>                
             </li>
             <!-- Authentication Links -->
-            @if (Auth::guest())
-                <li><a href="{{ url('/login') }}">Login</a></li>
-                <li><a href="{{ url('/register') }}">Register</a></li>
-            @else
+            @if ( ! (Auth::guest()) )
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->name }} <span class="caret"></span>

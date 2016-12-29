@@ -44,9 +44,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all();
-        $categories = Category::all();
-        return view('posts.create', compact('tags', 'categories'));
+        if(Auth::user() && Auth::user()->isAdmin()){
+            $tags = Tag::all();
+            $categories = Category::all();
+            return view('posts.create', compact('tags', 'categories'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -109,12 +114,17 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post=Post::find($id);
-        
-        $tags = Tag::all();
-        $categories = Category::all();
+        if(Auth::user() && Auth::user()->isAdmin()){
+            $post=Post::find($id);
 
-        return view('posts.edit', compact('post', 'tags', 'categories'));
+            $tags = Tag::all();
+            $categories = Category::all();
+
+            return view('posts.edit', compact('post', 'tags', 'categories'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**
