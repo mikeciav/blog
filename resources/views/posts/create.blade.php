@@ -34,7 +34,7 @@
 						</div>
 
 						<div class="form-group {{$errors->has('img')?'has-error':''}}">
-							<label class="col-md-2 control-label" for="img">Image: </label>
+							<label class="col-md-2 control-label" for="thumbnail">Image: </label>
 							<div class="col-md-10">
 								<span class="input-group-btn">
 							        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">

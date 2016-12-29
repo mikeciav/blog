@@ -1,5 +1,5 @@
 var editor_config = {
-	path_absolute : "{{ URL::to('/') }}/",
+	path_absolute : "/",
 	selector: "#body",
 	plugins: [
       "advlist autolink lists link image charmap print preview hr anchor pagebreak",
@@ -8,12 +8,17 @@ var editor_config = {
       "emoticons template paste textcolor colorpicker textpattern"
     ],
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-	relative_urls: false,
+    relative_urls: false,
+    image_dimensions: false,
+    image_class_list: [
+      {title: 'Responsive', value: 'img-responsive'}
+    ],
     file_browser_callback : function(field_name, url, type, win) {
       var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
       var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
       var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+      console.log(editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name);
       if (type == 'image') {
         cmsURL = cmsURL + "&type=Images";
       } else {

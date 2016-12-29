@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
 	<div class="row">
-		<div class="col-md-8 well">
+		<div class="col-md-12 well">
 			<h2>{{$post->title}}</h2>
 			<hr>
 				<span>
@@ -15,7 +14,7 @@
 					</span>
 				</span>
 			<hr>
-			<img src="{{asset('photos/'.$post->image)}}" alt="">
+			<img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive img-headline'>
 			<hr>
 			<p class='lead'><i>{{$post->tagline}}</i></p>
 			<hr>
@@ -58,7 +57,6 @@
 			@include('partials.disqus')
 		</div>
 	</div>	
-</div>
 
 
 @stop

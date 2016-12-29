@@ -16,7 +16,7 @@
 			<small>{{$post->created_at->format('F jS Y g:i A')}}</small>
 		</span>
 	</div>
-	<span><img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive'></span>
+	<span><img src="{{asset('photos/'.$post->image)}}" alt="" class='img-responsive img-headline'></span>
 	<hr>
 	<div class="row">
 		<div class='col-md-12'>

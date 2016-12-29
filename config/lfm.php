@@ -6,16 +6,11 @@ return [
 
     // If rename_file set to false and this set to true, then non-alphanumeric characters in filename will be replaced.
     'alphanumeric_filename' => true,
-    // If true, non-alphanumeric folder name will not be allowed.
-    'alphanumeric_directory' => false,
 
     'use_package_routes'    => true,
 
     // For laravel 5.2, please set to ['web', 'auth']
     'middlewares'           => ['web'],
-
-    // Add prefix for routes
-    'prefix'           => 'laravel-filemanager',
 
     // Allow multi_user mode or not.
     // If true, laravel-filemanager create private folders for each signed-in user.
