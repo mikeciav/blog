@@ -32,6 +32,8 @@
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" id="st_insights_js" src="http://w.sharethis.com/button/buttons.js?publisher=9e3aead6-c9ca-4095-a708-9bc6702cdfcf"></script>
     <script type="text/javascript">stLight.options({publisher: "9e3aead6-c9ca-4095-a708-9bc6702cdfcf", doNotHash: true, doNotCopy: false, shorten: false});</script>
+    <!--Disqus-->
+    <script id="dsq-count-scr" src="//ragareport.disqus.com/count.js" async></script>
     @yield('scripts');
 </body>
 </html>

@@ -55,6 +55,7 @@
 					<a href="{{url('/')}}" class='btn btn-default btn-block'>Return to Posts</a>
 				</div>
 			</div>
+			@include('partials.disqus')
 		</div>
 	</div>	
 </div>
