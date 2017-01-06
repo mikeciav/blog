@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta property="og:description" 			content="Quality Counter-Strike Journalism" />
-<meta property="og:image" 					content="http://ragareport.com/logo.png" />
+<meta property="og:image" 					content="http://ragareport.com/logo-lg.png" />
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
