@@ -3,8 +3,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="og:description" content="Quality Counter-Strike Journalism" />
-<meta property="og:image" content="logo.png" />
+<meta property="og:description" 			content="Quality Counter-Strike Journalism" />
+<meta property="og:image" 					content="http://ragareport.com/logo.png" />
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
