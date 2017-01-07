@@ -8,7 +8,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Post;
 
-class Bcontroller extends Controller
+class BController extends Controller
 {
 	public function slug(Request $request, $slug){
 		if(Auth::check()){ //Get favorites if user logged in
