@@ -100,6 +100,7 @@ class PostController extends Controller
             $fav = DB::table('post_user')->whereUserId(Auth::id())->pluck('post_id')->all();
         }
         $post=Post::find($id);
+        $post->footer = isset($post->footer) ? nl2br($post->footer) : "";
 
         $post->logView(Auth::check() ? Auth::id() : 0);
 
@@ -145,7 +146,7 @@ class PostController extends Controller
                                         )
         );
 
-        foreach(array('title', 'slug', 'body', 'tagline') as $v){
+        foreach(array('title', 'slug', 'body', 'tagline', 'footer') as $v){
             $post->{$v}=$request->{$v};
         }
         if (strpos($request->img,'/photos/')){

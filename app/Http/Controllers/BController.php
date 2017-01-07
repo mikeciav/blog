@@ -22,6 +22,7 @@ class BController extends Controller
 		}
 		else{
 			$post=Post::where('slug','=',$slug)->first();
+			$post->footer = isset($post->footer) ? nl2br($post->footer) : "";
 
 			$post->logView(Auth::check() ? Auth::id() : 0);
 
