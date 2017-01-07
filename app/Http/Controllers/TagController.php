@@ -21,11 +21,11 @@ class TagController extends Controller
     {
         $query = $request->get("query");
         if($query){
-            $posts =Post::search($query)->orderBy('id', 'desc')->paginate(7);
+            $posts =Post::search($query)->orderBy('id', 'desc')->paginate(5);
             return view('home', compact('posts'));
         }
         else {
-            $tags= Tag::orderBy('name')->paginate(5);
+            $tags= Tag::orderBy('name')->paginate(20);
             return view('tags.index', compact('tags'));
         }
     }

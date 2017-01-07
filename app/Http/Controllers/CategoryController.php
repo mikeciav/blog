@@ -25,7 +25,7 @@ class CategoryController extends Controller
             return view('home', compact('posts'));
         }
         else{
-            $categories= Category::orderBy('name')->paginate(5);
+            $categories= Category::orderBy('id')->paginate(20);
             return view('categories.index', compact('categories'));
         }
         
