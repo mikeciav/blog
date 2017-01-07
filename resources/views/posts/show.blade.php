@@ -72,19 +72,21 @@
 			</div>
 		</div>
 	</div>
-	<hr>
-	<div class="row">
-		<!--Buttons-->
-		<div class="col-sm-2">
-			<a href="{{route('posts.edit', $post->id)}}" class='btn btn-primary btn-block'>Edit Post</a>
-		</div>
-		<div class="col-sm-2 col-sm-offset-2">
-			<form action="{{route('posts.destroy', $post->id)}}" method='post'>
-				{{method_field("DELETE")}}{{csrf_field()}}
-				<input type="submit" name='delete' value='Delete Post' class='btn btn-danger btn-block'>
-			</form>
-		</div>
-	</div>	
+	@if(Auth::user() && Auth::user()->isAdmin())
+		<hr>
+		<div class="row">
+			<!--Buttons-->
+			<div class="col-sm-2">
+				<a href="{{route('posts.edit', $post->id)}}" class='btn btn-primary btn-block'>Edit Post</a>
+			</div>
+			<div class="col-sm-2 col-sm-offset-2">
+				<form action="{{route('posts.destroy', $post->id)}}" method='post'>
+					{{method_field("DELETE")}}{{csrf_field()}}
+					<input type="submit" name='delete' value='Delete Post' class='btn btn-danger btn-block'>
+				</form>
+			</div>
+		</div>	
+	@endif
 
 
 

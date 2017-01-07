@@ -1,10 +1,6 @@
 <div class='well'>
 	<h2><strong>
-		@if(Auth::user() && Auth::user()->isAdmin())
-			<a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a>
-		@else
 			<a href="{{route('slug', $post->slug)}}">{{$post->title}}</a>
-		@endif
 		</strong>
 	</h2>
 

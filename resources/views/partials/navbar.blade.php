@@ -37,7 +37,7 @@
                 <li class="{{Request::is('posts')?'active':''}}"><a href="{{ route('posts.create') }}">Create Post</a></li>
             @endif
             <li style='padding-top:7px;, padding-bottom:-2px; padding-right:5px; padding-left:5px'>
-                <form method='get' role='form'>
+                <form method='get' role='form' action="{{ url('/') }}">
                     {{csrf_field()}}
                     <div class="form-group has-feedback">
                         <input type="search" name='query' id='query' class='form-control' placeholder='Search' style='width:300px; height:40px; border-radius:20px; margin-bottom:-7px'>
