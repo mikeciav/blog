@@ -7,7 +7,7 @@
 
 	var disqus_config = function () {
 	@if (isset($post))		
-		this.page.url = "/b/{{ $post->slug }}";  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.url = "http://ragareport.com/b/{{ $post->slug }}";  // Replace PAGE_URL with your page's canonical URL variable
 		this.page.identifier = 'blog-{{ $post->slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable 
 	@endif
 
