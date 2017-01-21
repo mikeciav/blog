@@ -7808,4 +7808,9 @@ a {
   margin: 0 auto;
 }
 
+.flag {
+  height: 14px;
+  vertical-align: text-top;
+}
+
 /*# sourceMappingURL=app.css.map */
