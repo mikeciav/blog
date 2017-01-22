@@ -31,11 +31,18 @@
             @if(Auth::check())
                 <li class="{{Request::is('favorites')?'active':''}}"><a href="{{ route('favorites', Auth::id()) }}">Favorites</a></li>
             @endif
-            <li class="{{Request::is('tags')?'active':''}}"><a href="{{ route('tags.index') }}">Tags</a></li>
-            <li class="{{Request::is('categories')?'active':''}}"><a href="{{ route('categories.index') }}">Categories</a></li>
             @if(Auth::user() && Auth::user()->isAdmin())
                 <li class="{{Request::is('posts')?'active':''}}"><a href="{{ route('posts.create') }}">Create Post</a></li>
             @endif
+            <li class='dropdown'>
+                <a class='dropdown-toggle' data-toggle="dropdown" href="#">Browse&nbsp;<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{Request::is('teams')?'active':''}}"><a href="{{ route('teams.index') }}">Teams</a></li>
+                    <li class="{{Request::is('players')?'active':''}}"><a href="{{ route('players.index') }}">Players</a></li>
+                    <li class="{{Request::is('categories')?'active':''}}"><a href="{{ route('categories.index') }}">Categories</a></li>
+                    <li class="{{Request::is('tags')?'active':''}}"><a href="{{ route('tags.index') }}">Tags</a></li>
+                </ul>
+            </li>
             <li style='padding-top:7px;, padding-bottom:-2px; padding-right:5px; padding-left:5px'>
                 <form method='get' role='form' action="{{ url('/') }}">
                     {{csrf_field()}}

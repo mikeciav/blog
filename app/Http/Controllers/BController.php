@@ -7,6 +7,8 @@ use DB;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Team;
+use App\Player;
 
 class BController extends Controller
 {
@@ -23,14 +25,32 @@ class BController extends Controller
 		else{
 			$post=Post::where('slug','=',$slug)->first();
 			$post->footer = isset($post->footer) ? nl2br($post->footer) : "";
+			$teams = Team::all();
 
+			//Parse out teams
+			$startPos=0;
+			while(($startPos = strpos($post->body, "[team=", $startPos)) !== false){
+				$endPos = strpos($post->body, "]", $startPos+5);
+				$tagLength = $endPos-$startPos;
+				$teamTag = substr($post->body, $startPos+6, $endPos-$startPos-6);
+				$team = Team::where('tag', $teamTag)->first();
+				$popover = "<img class='flag flag-sm' src='/flags/".$team->country.".png'/> <a href='#' class='tool-tip'>{$team->name}<span>Roster for {$team->name}<br><br>";
+				foreach($team->players as $p){
+					$popover .= "<img class='flag flag-sm' src='/flags/".$p->country.".png'/> {$p->firstname} \"{$p->handle}\" {$p->lastname}<br>";
+				}
+				$popover .= "</span></a>";
+				$post->body = substr_replace($post->body, $popover, $startPos, $tagLength+1);
+				$startPos += $tagLength;
+			}
+
+			//Parse out other flags
 			$startPos=0;
 			while(($startPos = strpos($post->body, "[flag=", $startPos)) !== false){
 				$endPos = strpos($post->body, "]", $startPos+5);
 				$tagLength = $endPos-$startPos;
 				if ($tagLength == 8 || $tagLength == 9){
 					$flag = substr($post->body, $startPos+6, $endPos-$startPos-6);
-					$img = "<img class='flag' src='/flags/".$flag.".png'/>";
+					$img = "<img class='flag flag-sm' src='/flags/".$flag.".png'/>";
 					$post->body = substr_replace($post->body, $img, $startPos, $tagLength+1);
 				}
 				$startPos += $tagLength;

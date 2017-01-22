@@ -6,18 +6,20 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 well">
-				@foreach($teams as $team)
-					<p>
-						<img class='flag flag-sm' src="{{asset('flags/'.$team->country)}}.png">
-						<a href="{{route('teams.show', $team->id)}}" class='lead'>{{$team->name}}</a>
-					</p>
-				@endforeach
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						{{$teams->links()}}
-					</div>
+		<?php $counter = 0; ?>
+			@foreach($teams as $team)
+				<div class="col-md-6 <?php echo ($counter%2 == 0) ? '' : 'pull-right'; ?>">
+					<img class='flag flag-sm' src="{{asset('flags/'.$team->country)}}.png">
+					<a href="{{route('teams.show', $team->id)}}" class='lead'>{{$team->name}}</a>
+				</div>
+				<?php $counter+=1; ?>
+			@endforeach
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					{{$teams->links()}}
 				</div>
 			</div>
+		</div>
 		@if(Auth::user() && Auth::user()->isAdmin())
 			<div class="col-md-9">
 				<div class="panel panel-header">

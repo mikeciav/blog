@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Add Player</h1>
+<h1>Players</h1>
 <hr>
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 well">
+		<?php $counter = 0; ?>
 			@foreach($players as $player)
-				<p>
-					<img class='flag flag-lg' src="{{asset('flags/'.$player->country)}}.png">
+				<div class="col-md-6 <?php echo ($counter%2 == 0) ? '' : 'pull-right'; ?>">
+					<img class='flag flag-sm' src="{{asset('flags/'.$player->country)}}.png">
 					<a href="{{route('players.show', $player->id)}}" class='lead'>{{$player->handle}}</a>
-				</p>
+				</div>
+				<?php $counter+=1; ?>
 			@endforeach
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
@@ -117,8 +119,6 @@
 						</form>
 					</div>
 				</div>
-			@else
-				<p>show all players</p>
 			@endif
 		</div>
 	</div>

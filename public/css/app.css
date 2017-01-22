@@ -7783,7 +7783,8 @@ a {
   background-color: #004822;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .dropdown.open, .navbar-default .navbar-nav > .open > a:focus {
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .dropdown.open, .navbar-default .navbar-nav > .dropdown.open .active a, .navbar-default .navbar-nav > .open > a:focus {
   background-color: #009546;
   color: #F9FBFB;
 }
@@ -7816,6 +7817,51 @@ a {
 .flag.flag-lg {
   height: 32px;
   vertical-align: text-top;
+}
+
+.caret {
+  color: #F9FBFB;
+}
+
+a.tool-tip {
+  outline: none;
+  border-bottom: 1px dotted #004822;
+}
+
+a.tool-tip:hover {
+  text-decoration: none;
+}
+
+a.tool-tip span {
+  z-index: 10;
+  display: none;
+  padding: 14px 20px;
+  margin-top: -30px;
+  margin-left: 28px;
+  width: 300px;
+  line-height: 16px;
+}
+
+a.tool-tip:hover span {
+  display: inline;
+  position: absolute;
+  color: #3A4A4D;
+  border: 1px solid #004822;
+  background: #F9FBFB;
+}
+
+.callout {
+  z-index: 20;
+  position: absolute;
+  top: 30px;
+  border: 0;
+  left: -12px;
+}
+
+/*CSS3 extras*/
+a.tool-tip span {
+  border-radius: 4px;
+  box-shadow: 5px 5px 8px #CCC;
 }
 
 /*# sourceMappingURL=app.css.map */
