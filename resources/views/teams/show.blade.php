@@ -24,7 +24,9 @@
 						</ul>
 					</div>
 					<div class="col-md-3">
-						<img class='img-responsive' src="{{asset('photos/'.$team->logo)}}" alt="">
+						@if(!empty($team->logo))
+							<img class='img-responsive' src="{{asset('photos/'.$team->logo)}}" alt="">
+						@endif
 					</div>
 				</div>
 				<hr>

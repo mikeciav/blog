@@ -60,10 +60,11 @@ class PlayerController extends Controller
             $player->{$v}=$request->{$v};
         }
 
-        $img = explode('/photos/',$request->picture);
-        $img = $img[1];
-        $player->picture = $img;
-
+       if(!empty($request->picture)){
+            $img = explode('/photos/',$request->picture);
+            $img = $img[1];
+            $player->picture = $img;
+        }
         $player->save();
 
         //Sync teams
@@ -123,14 +124,16 @@ class PlayerController extends Controller
             $player->{$v}=$request->{$v};
         }
 
-        if (strpos($request->picture,'/photos/')){
-            $img = explode('/photos/',$request->picture);
-            $img = $img[1];
+       if(!empty($request->picture)){
+            if (strpos($request->picture,'/photos/')){
+                $img = explode('/photos/',$request->picture);
+                $img = $img[1];
+            }
+            else{
+                $img = $request->picture;
+            }
+            $player->picture = $img;
         }
-        else{
-            $img = $request->picture;
-        }
-        $player->picture = $img;
 
         $player->save();
 

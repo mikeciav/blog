@@ -59,9 +59,11 @@ class TeamController extends Controller
             $team->{$v}=$request->{$v};
         }
 
-        $img = explode('/photos/',$request->logo);
-        $img = $img[1];
-        $team->logo = $img;
+        if(!empty($request->logo)){
+            $img = explode('/photos/',$request->logo);
+            $img = $img[1];
+            $team->logo = $img;
+        }
 
         $team->save();
 
@@ -121,14 +123,16 @@ class TeamController extends Controller
             $team->{$v}=$request->{$v};
         }
 
-        if (strpos($request->logo,'/photos/')){
-            $img = explode('/photos/',$request->logo);
-            $img = $img[1];
+        if(!empty($request->logo)){
+            if (strpos($request->logo,'/photos/')){
+                $img = explode('/photos/',$request->logo);
+                $img = $img[1];
+            }
+            else{
+                $img = $request->logo;
+            }
+            $team->logo = $img;
         }
-        else{
-            $img = $request->logo;
-        }
-        $team->logo = $img;
 
         $team->save();
 

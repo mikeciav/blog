@@ -19,7 +19,9 @@
 						</h3>
 					</div>
 					<div class="col-md-3">
-						<img class='img-responsive' src="{{asset('photos/'.$player->picture)}}" alt="">
+						@if(!empty($player->picture))
+							<img class='img-responsive' src="{{asset('photos/'.$player->picture)}}" alt="">
+						@endif
 					</div>
 				</div>
 				<hr>
