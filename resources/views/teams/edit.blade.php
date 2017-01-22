@@ -8,15 +8,27 @@
 		<div class="col-md-8">
 			<div class="panel panel-header">
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="{{route('teams.update')}}" enctype='multipart/form-data'>
-						{{csrf_field()}}
+					<form class="form-horizontal" role="form" method="post" action="{{route('teams.update', $team->id)}}" enctype='multipart/form-data'>
+						{{method_field('PUT')}}{{csrf_field()}}
 						<div class="form-group {{$errors->has('name')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="name">Name: </label>
 							<div class="col-md-6">
-								<input type='text' name='title' id='title' class='form-control' value="{{old('title')}}" required />
-								@if($errors->has('title'))
+								<input type='text' name='name' id='name' class='form-control' value="{{$team->name}}" required />
+								@if($errors->has('tag'))
 									<span class="help-block">
-										<strong>{{$errors->first('title')}}</strong>
+										<strong>{{$errors->first('tag')}}</strong>
+									</span>
+								@endif
+							</div>	
+						</div>
+
+						<div class="form-group {{$errors->has('tag')?'has-error':''}}">
+							<label class="col-md-4 control-label" for="name">Tag: </label>
+							<div class="col-md-6">
+								<input type='text' name='tag' id='tag' class='form-control' value="{{$team->tag}}" required />
+								@if($errors->has('tag'))
+									<span class="help-block">
+										<strong>{{$errors->first('tag')}}</strong>
 									</span>
 								@endif
 							</div>	
@@ -25,7 +37,7 @@
 						<div class="form-group {{$errors->has('country')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="country">Country: </label>
 							<div class="col-md-6">
-								<input type='text' name='country' id='country' class='form-control' value="{{old('country')}}" required />
+								<input type='text' name='country' id='country' class='form-control' value="{{$team->country}}" required />
 								@if($errors->has('country'))
 									<span class="help-block">
 										<strong>{{$errors->first('country')}}</strong>
@@ -34,36 +46,30 @@
 							</div>	
 						</div>
 
-						<div class="form-group {{$errors->has('img')?'has-error':''}}">
-							<label class="col-md-4 control-label" for="img">Upload Logo: </label>
-							<div class="col-md-6">
-								<input type='file' name='logo' id='logo' class='form-control' value="{{old('logo')}}"/>
+						<div class="form-group {{$errors->has('logo')?'has-error':''}}">
+							<label class="col-md-2 control-label" for="thumbnail">Logo: </label>
+							<div class="col-md-10">
+								<span class="input-group-btn">
+							        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+							         	<i class="fa fa-picture-o"></i> Choose
+							        </a>
+							    </span>
+							    <input id="thumbnail" name='logo' class="form-control" type="text" value="{{$team->logo}}">
 								@if($errors->has('logo'))
 									<span class="help-block">
 										<strong>{{$errors->first('logo')}}</strong>
 									</span>
 								@endif
+								<img id="holder" style="margin-top:15px;max-height:100px;">		
 							</div>	
-						</div>						
-
-						<div class="form-group {{$errors->has('body')?'has-error':''}}">
-							<label class="col-md-4 control-label" for="body">Post body: </label>
-							<div class="col-md-6">
-								<textarea name='body' id='body' class='form-control' value="{{old('body')}}" placeholder="Memes here" required></textarea>
-								@if($errors->has('body'))
-									<span class="help-block">
-										<strong>{{$errors->first('body')}}</strong>
-									</span>
-								@endif
-							</div>	
-						</div>
+						</div>					
 
 						<div class="form-group {{$errors->has('players')?'has-error':''}}">
 							<label class="col-md-4 control-label" for="categories">Roster: </label>
 							<div class="col-md-6">
 								<select name='players[]' id='players' class='form-control multiSelect' multiple='multiple'>
 									@foreach($players as $player)
-										<option value="{{$player->id}}">{{$player->name}}</option>
+										<option value="{{$player->id}}">{{$player->handle}}</option>
 									@endforeach
 								</select>
 								
@@ -85,7 +91,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<a href="{{route('posts.show', $post->id)}}" class='btn btn-danger btn-block'>
+								<a href="{{route('teams.show', $team->id)}}" class='btn btn-danger btn-block'>
 									Cancel
 								</a>
 							</div>
@@ -100,9 +106,12 @@
 @stop
 
 @section('scripts')
+<script src="{{ URL::to('js/tinymce/tinymce.min.js')}}"></script>
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+<script src="/js/mceSetup.js"></script>
 <script>
 	//Instantiate multiselect, encode the selected tag ids, and trigger the change in the select
 	$('.multiSelect').select2();
-	$('#teams').select2().val({!!json_encode($team->players()->getRelatedIds())!!}).trigger('change');
+	$('#players').select2().val({!!json_encode($team->players()->getRelatedIds())!!}).trigger('change');
 </script>
 @stop

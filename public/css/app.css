@@ -7808,8 +7808,13 @@ a {
   margin: 0 auto;
 }
 
-.flag {
+.flag.flag-sm {
   height: 14px;
+  vertical-align: text-top;
+}
+
+.flag.flag-lg {
+  height: 32px;
   vertical-align: text-top;
 }
 

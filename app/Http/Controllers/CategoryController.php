@@ -73,8 +73,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('categories.edit', compact('category'));
+        if(Auth::user() && Auth::user()->isAdmin()){
+            $category = Category::find($id);
+            return view('categories.edit', compact('category'));
+        }
+        else{
+            return redirect('/');
+        }
     }
 
     /**

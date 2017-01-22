@@ -5,6 +5,7 @@
 <hr>
 <div class="container">
 	<div class="row">
+		<div class="col-md-12">
 			<div class="panel panel-header">
 				<div class="panel-body">
 					<form class="form-horizontal" role="form" method="post" action="{{route('posts.update', $post->id)}}" enctype='multipart/form-data'>
@@ -139,6 +140,7 @@
 					</form>
 				</div>
 			</div>
+		</div>
 	</div>
 </div>
 

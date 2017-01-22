@@ -22,6 +22,9 @@ Route::get('b/{slug}', 'BController@slug')->name('slug');
 Route::resource('tags', 'TagController');
 Route::resource('categories', 'CategoryController');
 
+Route::resource('teams', 'TeamController');
+Route::resource('players', 'PlayerController');
+
 Route::get('profile/{id}', 'ProfileController@profile')->name('profile')->middleware('auth');
 Route::get('profile/{id}/favorites', 'ProfileController@favorites')->name('favorites')->middleware('auth');
 Route::post('profile/{id}/favorites', 'ProfileController@store')->name('favorites.store');
