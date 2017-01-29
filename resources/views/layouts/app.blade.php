@@ -13,7 +13,10 @@
         @include('partials.messages')
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-2">
+                    <a class="twitter-timeline" href="https://twitter.com/RagamuffinCS">Tweets by RagamuffinCS</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-7">
                     @yield('content')
                 </div>
                 <div class="col-md-3">

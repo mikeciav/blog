@@ -1,28 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Teams</h1>
-<hr>
-<div class="container">
+	<h1>Teams</h1>
+	<hr>
 	<div class="row">
-		<div class="col-md-8 well">
-		<?php $counter = 0; ?>
-			@foreach($teams as $team)
-				<div class="col-md-6 <?php echo ($counter%2 == 0) ? '' : 'pull-right'; ?>">
-					<img class='flag flag-sm' src="{{asset('flags/'.$team->country)}}.png">
-					<a href="{{route('teams.show', $team->id)}}" class='lead'>{{$team->name}}</a>
-				</div>
-				<?php $counter+=1; ?>
-			@endforeach
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					{{$teams->links()}}
+		<div class="col-md-12">
+				<div class="col-md-12 well">
+					<?php $counter = 0; ?>
+					@foreach($teams as $team)
+						<?php if($counter % 2 == 0) echo "<div class='row'>";?>
+						<div class="col-md-6 <?php echo ($counter%2 == 0) ? '' : 'pull-right'; ?>">
+							<img class='flag flag-sm' src="{{asset('flags/'.$team->country)}}.png">
+							<a href="{{route('teams.show', $team->id)}}" class='lead'>{{$team->name}}</a>
+						</div>
+						<?php if($counter % 2 == 1) echo "</div>";?>
+						<?php $counter+=1; ?>
+					@endforeach
+					<?php if($counter % 2 == 1) echo "</div>";?>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							{{$teams->links()}}
+						</div>
+					</div>	
 				</div>
 			</div>
-		</div>
 		@if(Auth::user() && Auth::user()->isAdmin())
-			<div class="col-md-9">
+			<div class="col-md-12">
 				<div class="panel panel-header">
+					<h3>Add a Team</h3>
 					<div class="panel-body">
 						<form class="form-horizontal" role="form" method="post" action="{{route('teams.store')}}" enctype='multipart/form-data'>
 							{{csrf_field()}}
@@ -110,7 +115,6 @@
 			</div>
 		@endif
 	</div>
-</div>
 
 @stop
 

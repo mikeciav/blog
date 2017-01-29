@@ -3,9 +3,8 @@
 @section('content')
 <h1>Edit Player</h1>
 <hr>
-<div class="container">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<div class="panel panel-header">
 				<div class="panel-body">
 					<form class="form-horizontal" role="form" method="post" action="{{route('players.update', $player->id)}}" enctype='multipart/form-data'>
@@ -105,7 +104,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 @stop
 

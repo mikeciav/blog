@@ -3,26 +3,28 @@
 @section('content')
 <h1>Players</h1>
 <hr>
-<div class="container">
 	<div class="row">
-		<div class="col-md-8 well">
-		<?php $counter = 0; ?>
-			@foreach($players as $player)
-				<div class="col-md-6 <?php echo ($counter%2 == 0) ? '' : 'pull-right'; ?>">
-					<img class='flag flag-sm' src="{{asset('flags/'.$player->country)}}.png">
-					<a href="{{route('players.show', $player->id)}}" class='lead'>{{$player->handle}}</a>
-				</div>
-				<?php $counter+=1; ?>
-			@endforeach
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					{{$players->links()}}
+		<div class="col-md-12">
+			<div class="col-md-12 well">
+			<?php $counter = 0; ?>
+				@foreach($players as $player)
+					<div class="col-md-6 <?php echo ($counter%2 == 0) ? '' : 'pull-right'; ?>">
+						<img class='flag flag-sm' src="{{asset('flags/'.$player->country)}}.png">
+						<a href="{{route('players.show', $player->id)}}" class='lead'>{{$player->handle}}</a>
+					</div>
+					<?php $counter+=1; ?>
+				@endforeach
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						{{$players->links()}}
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9">
 			@if(Auth::user() && Auth::user()->isAdmin())
+				<div class="col-md-12">
 				<div class="panel panel-header">
+					<h3>Add a Player</h3>
 					<div class="panel-body">
 						<form class="form-horizontal" role="form" method="post" action="{{route('players.store')}}" enctype='multipart/form-data'>
 							{{csrf_field()}}
@@ -95,7 +97,7 @@
 							<div class="form-group {{$errors->has('teams')?'has-error':''}}">
 								<label class="col-md-4 control-label" for="team">Current Team: </label>
 								<div class="col-md-6">
-									<select name='teams[]' id='teams' class='form-control' class='multiSelect' multiple='multiple'>
+									<select name='teams[]' id='teams' class='form-control multiSelect' multiple='multiple'>
 										@foreach($teams as $team)
 											<option value="{{$team->id}}">{{$team->name}}</option>
 										@endforeach
@@ -122,7 +124,6 @@
 			@endif
 		</div>
 	</div>
-</div>
 
 @stop
 

@@ -1,26 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
 	<div class="row">
-		<div class="col-md-4 well">
-			<div class="header" style="font-size: 28px">Tags</div>
-			@foreach($tags as $t)
-				<p>
-					<a href="{{route('tags.show', $t->id)}}" class='lead'>{{$t->name}}</a>
-					<span><small>is in <b style='color:red'>{{$t->posts()->count()}}</b> posts</small></span>
-				</p>
-			@endforeach
-			<div class="row">
-				<div class="col-md-8">
-					{{$tags->links()}}
+		<div class="col-md-12">
+			<div class="col-md-12 well">
+				<div class="header" style="font-size: 28px">Tags</div>
+				@foreach($tags as $t)
+					<p>
+						<a href="{{route('tags.show', $t->id)}}" class='lead'>{{$t->name}}</a>
+						<span><small>is in <b style='color:red'>{{$t->posts()->count()}}</b> posts</small></span>
+					</p>
+				@endforeach
+				<div class="row">
+					<div class="col-md-8">
+						{{$tags->links()}}
+					</div>
 				</div>
 			</div>
-		</div>
-		
-		@if(Auth::user() && Auth::user()->isAdmin())
-			<div class="col-md-4">
-				<div class="well">
+			@if(Auth::user() && Auth::user()->isAdmin())
+			<div class="col-md-12 well">
 					<h3>Create Tag</h3>
 					<hr>
 					<form class='form-horizontal' method='post' action="{{route('tags.store')}}">
@@ -57,10 +55,8 @@
 						</div>
 					</form>
 				</div>
-			</div>
 		@endif
-
+		</div>
 	</div>
-</div>
 
 @stop

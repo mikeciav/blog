@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
 	<div class="row">
-		<div class="col-md-4 well">
-			<div class="header" style="font-size: 28px">Categories</div>
-			@foreach($categories as $cat)
-				<p>
-					<a href="{{route('categories.show', $cat->id)}}" class='lead'>{{$cat->name}}</a>
-					<span><small>is in <b style='color:red'>{{$cat->posts()->count()}}</b> posts</small></span>
-				</p>
-			@endforeach
-			<div class="row">
-				<div class="col-md-8">
-					{{$categories->links()}}
+		<div class="col-md-12">
+			<div class="col-md-12 well">
+				<div class="header" style="font-size: 28px">Categories</div>
+				@foreach($categories as $cat)
+					<p>
+						<a href="{{route('categories.show', $cat->id)}}" class='lead'>{{$cat->name}}</a>
+						<span><small>is in <b style='color:red'>{{$cat->posts()->count()}}</b> posts</small></span>
+					</p>
+				@endforeach
+				<div class="row">
+					<div class="col-md-8">
+						{{$categories->links()}}
+					</div>
 				</div>
 			</div>
-		</div>
-		@if(Auth::user() && Auth::user()->isAdmin())
-			<div class="col-md-4">
+			@if(Auth::user() && Auth::user()->isAdmin())
+			<div class="col-md-12">
 				<div class="well">
 					<h3>Create Category</h3>
 					<hr>
@@ -57,8 +57,8 @@
 					</form>
 				</div>
 			</div>
-		@endif
+			@endif
+		
+		</div>
 	</div>
-</div>
-
 @stop
