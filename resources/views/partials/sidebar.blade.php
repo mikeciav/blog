@@ -27,6 +27,18 @@
                     </table>
                 </div>
 
+                <!-- An ad -->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- sidebar -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8326042738973131"
+                     data-ad-slot="1357297602"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+
                 <!-- Blog Categories Well -->
                 <div class="well">
                     <h4><a class='link-header' href="{{ route('categories.index') }}">Browse Categories</a></h4>
@@ -48,6 +60,18 @@
                     </div>
                     <!-- /.row -->
                 </div>
+
+                <!-- An ad -->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- sidebar -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8326042738973131"
+                     data-ad-slot="1357297602"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
 
                 <!-- Side Widget Well -->
                 <div class="well">
