@@ -138,7 +138,7 @@ class TeamController extends Controller
 
         //Sync teams
         if(!isset($request->players)) $request->players = array();
-        $team->players()->sync($request->players, false);
+        $team->players()->sync($request->players, true);
 
         return redirect()->route('teams.show', $team->id);
     }
